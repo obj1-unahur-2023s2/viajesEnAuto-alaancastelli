@@ -1,0 +1,72 @@
+import Clientes.*
+import remiseras.*
+
+describe " testing de clientes"{
+
+test "Ana Maria es esconomicamente estable " {
+
+	assert.that(anaMaria.economiaEsEstable())
+
+	}
+test "valor del kilometro cuuando es economicamente estable"{
+	assert.equals(30, anaMaria.valorKilometro())
+}
+test "Ana Maria no es esconomicamente estable " {
+
+	anaMaria.revertirSituacionEconomica()
+	assert.notThat(anaMaria.economiaEsEstable())
+
+	}
+test "Valor de kilometro de teresa es igual a 22"{
+	
+	assert.equals(22 , teresa.valorKilometro())
+	}
+}
+
+describe "test sobre roxana"{
+	test " lleva a ludmila 10km"{
+		assert.equals(180,roxana.precioViaje(ludmila,10))
+	}
+	test " lleva a teresa 10km"{
+		assert.equals(220,roxana.precioViaje(teresa,10))
+	}
+	test " lleva a anaMaria 10km"{
+		assert.equals(300,roxana.precioViaje(anaMaria,10))
+	}
+	
+}
+describe "test sobre gabriela"{
+	test " lleva a ludmila 10km"{
+		assert.equals(216,gabriela.precioViaje(ludmila,10))
+	}
+	test " lleva a teresa 10km"{
+		assert.equals(264,gabriela.precioViaje(teresa,10))
+	}
+	test " lleva a anaMaria 10km"{
+		assert.equals(360,gabriela.precioViaje(anaMaria,10))
+	}
+}
+describe "test sobre mariela"{
+	test " lleva a ludmila 10km"{
+		assert.equals(216,mariela.precioViaje(ludmila,10))
+	}
+	test " lleva a teresa 10km"{
+		assert.equals(264,mariela.precioViaje(teresa,10))
+	}
+	test " lleva a anaMaria 10km"{
+		assert.equals(360,mariela.precioViaje(anaMaria,10))
+	}
+}
+describe "test sobre lucia"{
+	test " no se puede reemplazar a si misma "{
+		assert.throwsExceptionWithMessage("ERROR",{lucia.reemplazaA(lucia))}
+	}
+	test "se puede reemplazar a roxana"{
+		assert.doesNotThrowException({lucia.reemplazaA(roxana))}
+	test "reemplazo de roxana"{
+		lucia.reemplazaA(roxana)
+		assert.equals(180, lucia.precioViaje(ludmila,10))
+		}
+	}
+}
+
